@@ -1,0 +1,59 @@
+   <!-- ==========Banner Section Starts Here========== -->
+   <section class="page-header bg_img" data-background="./assets/images/banner/page-header.jpg" style="background-image: url(&quot;./assets/images/banner/page-header.jpg&quot;);">
+    <div class="container">
+        <div class="page-header-content">
+            <h1 class="title">{{teacherDetails.name}}</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="#">Pages</a>
+                </li>
+                <li>
+                    Teachers
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- ==========Banner Section Ends Here========== -->
+
+<!-- ==========Teacher Single Section Starts Here========== -->
+<section class="speaker-single-section padding-top padding-bottom">
+    <div class="container">
+        <div class="teacher-wrapper" *ngIf="teacherDetails">
+            <div class="teacher-single-top">
+                <div class="teacher-single-item d-flex flex-wrap justify-content-between">
+                        <img [src]="teacherDetails.image"style="height:200px ; width: 200px;" alt="teacher">
+                    <div class="teacher-single-content">
+                        <h4 class="title">{{teacherDetails.title}}</h4>
+                        <p>{{teacherDetails.description}}</p>
+                        <ul>
+                            <li class="d-flex flex-wrap justify-content-start">
+                                <span class="list-name">Name</span>
+                                <span class="list-attr">{{teacherDetails.name}}</span>
+                            </li>
+                            <li class="d-flex flex-wrap justify-content-start">
+                                <span class="list-name">Adress</span>
+                                <span class="list-attr">{{teacherDetails.address}}</span>
+                            </li>
+                            <li class="d-flex flex-wrap justify-content-start">
+                                <span class="list-name">Email</span>
+                                <span class="list-attr">{{teacherDetails.email}}</span>
+                            </li>
+                            <li class="d-flex flex-wrap justify-content-start">
+                                <span class="list-name">Phone</span>
+                                <span class="list-attr">{{teacherDetails.phone}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==========Teacher Single Section Ends Here========== -->
+
+
+

@@ -1,0 +1,57 @@
+
+
+
+
+<div class="container mb-5">
+
+<form #postForm="ngForm"  (ngSubmit)="addPost()">
+
+
+    <div class="mb-3">
+        <label for="PostTitle" class="form-label">Post Title</label>
+
+        <input #PostTitleInput="ngModel"  type="text"
+        class="form-control" name="PostTitle" id="PostTitle" [ngModelOptions]="{standalone:true}" [(ngModel)]="NewPost.title" >
+    </div>
+
+    <div class="terminal">
+      <ngx-dropzone (change)="onSelect($event)" style="margin: 20px;">
+        <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+        <ngx-dropzone-image-preview
+          ngProjectAs="ngx-dropzone-preview"
+          *ngFor="let f of files"
+          [file]="f"
+          [removable]="true"
+          (removed)="onRemove(f)"
+        >
+          <ngx-dropzone-label> ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
+    </div>
+    <!-- <div class="mb-3">
+        <label for="PostImg" class="form-label">image</label>
+        <input type="file"  class="form-control"  id="PostImg" [ngModelOptions]="{standalone:true}" [(ngModel)]="NewPost.image" >
+      </div> -->
+
+
+    <div class="mb-3">
+      <label for="postDesc" class="form-label">Description</label>
+      <input type="text"
+        class="form-control" name="postDesc" id="postDesc" required  [ngModelOptions]="{standalone:true}" [(ngModel)]="NewPost.description">
+    </div>
+
+
+    <button type="submit" class="btn btn-success mb-5" >Submit</button>
+
+</form>
+
+</div>
+
+
+   <hr>
+   <div>
+    {{NewPost | json }}
+</div>
+
+
+

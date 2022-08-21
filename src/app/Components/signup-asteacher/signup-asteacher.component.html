@@ -1,0 +1,159 @@
+   <!-- ==========Banner Section Starts Here========== -->
+   <section class="page-header bg_img" data-background="./assets/images/banner/page-header.jpg" style="background-image: url(&quot;./assets/images/banner/page-header.jpg&quot;);">
+    <div class="container">
+        <div class="page-header-content">
+            <h1 class="title">kittons Register Now</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="#">Pages</a>
+                </li>
+                <li>
+                    Register Now
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- ==========Banner Section Ends Here========== -->
+<!-- ==========Login Section Section Starts Here========== -->
+    <div class="login-section padding-top padding-bottom">
+        <div class="container">
+            <div class="account-wrapper">
+                <h3 class="title">Register Now</h3>
+                <form class="account-form" #myform="ngForm" (ngSubmit)="mysubmit(myform)" >
+                    <div class="form-group">
+                  <label class="form-label d-flex justify-content-start" for="ParentName">Name  </label>
+                    <input type="text" id="Name" name="name" required  pattern="[A-Za-z]{5,20}" ngModel #Name="ngModel">
+                    <div class="alert alert-danger mt-3" [hidden]="Name.valid || Name.untouched">
+                        <small *ngIf="Name.errors?.['required']">
+                           Name is required 
+                        </small>
+                        <small *ngIf="Name.errors?.['pattern']">
+                         Name must be 5 letters at least 
+                        </small>
+                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                  <label class="form-label d-flex justify-content-start" for="Email">Email  </label>
+                        <input type="text" id="Email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel #email="ngModel">
+                        <div class="alert alert-danger mt-3" [hidden]="email.valid || email.untouched">
+                            <small *ngIf="email.errors?.['required']">
+                                Email is required 
+                            </small>
+                            <small [hidden]="!email.errors?.['pattern']">
+                                Please input a valid email.
+                            </small>
+                            
+                            </div>
+                    </div>
+                    <div class="form-group">
+                  <label class="form-label d-flex justify-content-start" for="phoneNumber">Phone Number  </label>
+                        <input type="text" id="phoneNumber" name="phone" required minlength="11" ngModel
+                            #phone="ngModel">
+                        <div class="alert alert-danger mt-3" [hidden]="phone.valid || phone.untouched">
+                            <div *ngIf="phone.errors?.['required']">
+                                phone is required
+                            </div>
+                            <div  *ngIf="phone.errors?.['minlength']">
+                                phone must be at least 11 characters long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="form-label d-flex justify-content-start" for="SSID">SSID </label>
+                        <input type="text" id="SSID" name="ssid" (keyup)="onKeymax($event)" required pattern="[0-9]{14}" ngModel
+                        #SSID="ngModel">
+                        <div class="alert alert-danger mt-3" [hidden]="SSID.valid || SSID.untouched">
+                            <div  *ngIf="SSID.errors?.['required']">
+                                SSID is required
+                            </div>
+                        
+                        <small *ngIf="SSID.errors?.['pattern']">
+                            Please input a valid SSID.
+                        </small>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label d-flex justify-content-start" for="Address">Address </label>
+                          <input type="text" id="Address"  name="Address"  required pattern="[A-Za-z]{5,20}" ngModel #Address="ngModel"  [class.is-valid]="Address.valid" [class.is-invalid]="Address.invalid"/>
+                          <div class="alert alert-danger mt-3" [hidden]="Address.valid || Address.untouched">
+                              <small *ngIf="Address.errors?.['required']">
+                                  Address is required 
+                              </small>
+                              <small *ngIf="Address.errors?.['pattern']">
+                                  Address must be 5 letters at least 
+                              </small>
+                              
+                              </div>
+                      </div>
+                    <div class="form-group">
+                        <label class="form-label d-flex justify-content-start" for="Password">Password </label>
+                        <input type="password" (keyup)="onKeypassword($event)"id="Password" name="password" minlength="6" maxlength="15" required
+                            ngModel #password="ngModel">
+                        <div class="alert alert-danger mt-3" [hidden]="password.valid || password.untouched">
+                            <div  *ngIf="password.errors?.['required']">
+                                password is required
+                            </div>
+                            <div  *ngIf="password.errors?.['minlength']">
+                                Name must be at least 6 characters long.
+                            </div>
+                            <div *ngIf="password.errors?.['maxlength']">
+                                Name must be least then 15 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label d-flex justify-content-start" for="Confirm Password"> Confirm Password </label>
+                        <input type="password" (keyup)="onKey($event)"  id="Confirm Password"  required ngModel #confirmpassword="ngModel">
+                        <div  class="alert alert-danger mt-3" *ngIf="conpass!=pass" >
+                     
+                                confirm password is invalid
+                            </div>
+
+                        
+                    </div>
+
+
+
+                    <!-- Terminal -->
+                    <div class="terminal">
+                        <label class="form-label d-flex justify-content-start">Image</label>
+                      <ngx-dropzone (change)="onSelect($event)" style="margin: 20px;">
+                        
+                        <ngx-dropzone-label>Drop Your Image</ngx-dropzone-label>
+                        <ngx-dropzone-image-preview
+                          ngProjectAs="ngx-dropzone-preview"
+                          *ngFor="let f of files"
+                          [file]="f"
+                          [removable]="true"
+                          (removed)="onRemove(f)"
+                        >
+                          <ngx-dropzone-label> ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-image-preview>
+                      </ngx-dropzone>
+                      <!-- <div>
+                        <button (click)="onload()">Upload</button>
+                      </div> -->
+                    </div>
+
+
+
+
+                <div class="form-group">
+                    <button [disabled]="myform.invalid&&max.length<=14" class="d-block custom-button"><span>Get Started Now</span></button>
+                    <!-- <a routerLink="/sign-up as teacher" class="btn btn-primary d-block customs-button mt-5 " style="background-color:purple; height:50px; text-decoration:none; color: #fff; font-size: 15px;">Get Started Now As Teacher</a> -->
+            </div>
+            </form>
+            <div class="account-bottom">
+                <span class="d-block cate pt-10">Are you a member? <a class="btn " style="text-decoration: underline; color: rgb(234, 85, 85);" routerLink="/sign-in">Login</a></span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==========Login Section Section Ends Here========== -->

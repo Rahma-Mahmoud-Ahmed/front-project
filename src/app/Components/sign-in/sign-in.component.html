@@ -1,0 +1,95 @@
+<!-- ==========Banner Section Starts Here========== -->
+<section class="page-header bg_img" data-background="./assets/images/banner/page-header.jpg"
+    style="background-image: url(&quot;./assets/images/banner/page-header.jpg&quot;);">
+    <div class="container">
+        <div class="page-header-content">
+            <h1 class="title">kitton Login Page</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="#">Pages</a>
+                </li>
+                <li>
+                    Login
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- ==========Banner Section Ends Here========== -->
+
+<!-- ==========Login Section Section Starts Here========== -->
+<div class="login-section padding-top padding-bottom">
+    <div class="container">
+        <div class="account-wrapper">
+            <h3 class="title">Login</h3>
+            <form class="account-form" #myform="ngForm" (ngSubmit)="mysubmit(myform)">
+                     <div class="form-group">
+                  <label class="form-label d-flex justify-content-start" for="Email">Email  </label>
+                        <input type="text" id="Email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel #email="ngModel" >
+                        <div class="alert alert-danger mt-3" [hidden]="email.valid || email.untouched">
+                            <small *ngIf="email.errors?.['required']">
+                                Email is required 
+                            </small>
+                            <small [hidden]="!email.errors?.['pattern']">
+                                Please input a valid email.
+                            </small>
+                            
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label d-flex justify-content-start" for="Password">Password </label>
+                        <input type="password" id="Password" name="password" required
+                            ngModel #password="ngModel" >
+                        <div class="alert alert-danger mt-3" [hidden]="password.valid || password.untouched">
+                            <div  *ngIf="password.errors?.['required']">
+                                password is required
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+
+                <div class="form-group">
+                    <div class="d-flex justify-content-between flex-wrap pt-sm-2">
+                        <div class="checkgroup">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember">Remember Me</label>
+                        </div>
+                        <a href="#">Forget Password?</a>
+                    </div>
+                </div>
+
+
+                <div class="fs-2  text-danger">{{message}}</div>
+
+                
+
+                <div class="form-group">
+                    <button type="submit" [disabled]="myform.invalid" class="btn btn-primary d-block customs-button mt-5 "
+                        style="background-color:purple; height:50px; text-decoration:none; color: #fff; font-size: 15px;">Submit
+                        Now</button>
+                    <!-- <button class="d-block custom-button"><span>Submit Now As UserandTeacher</span></button> -->
+                </div>
+            </form>
+            <div class="account-bottom">
+                <span class="d-block cate pt-10">Do Not Have any Account? <a routerLink="/Welcome">Sign
+                        Up</a></span>
+
+                        <!-- <div   class="alert alert-danger mt-3" *ngIf="email.value==userData.email|| password.value==userData.password">
+                    <small>
+                        invalid Email or password"
+                    </small>
+                 </div>
+                 -->
+            </div>
+        </div>
+    
+       
+    </div>
+
+</div>
+<!-- ==========Login Section Section Ends Here========== -->
